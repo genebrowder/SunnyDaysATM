@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <!-- CSS -->
+    <link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" href="../static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/index.css}" href="../static/css/signin.css" rel="stylesheet"  type="text/css"/>
+
+    <!-- JavaScript -->
+    <script th:src="@{/lib/jquery/jquery-2.2.1.min.js}" src="../static/lib/jquery/jquery-2.2.1.min.js" type="application/javascript"></script>
+    <script>
+        $(function () {
+            alert('document ready...');
+        });
+    </script>
+</head>
+<body>
+<p th:text=" 'account' +  ${userLoginInfo.accountNumber}" />
+${userLoginInfo.pin}
+</body>
+</html>
