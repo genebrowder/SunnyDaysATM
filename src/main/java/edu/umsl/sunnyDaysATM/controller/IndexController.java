@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class IndexController {
 
-    @RequestMapping(value = "/index", method= RequestMethod.GET)
+    @RequestMapping(value = {"/index","/"}, method= RequestMethod.GET)
     public String index(Model model){
         model.addAttribute("userLoginInfo",new UserLoginInfo());
         return "index";
 
     }
-    @RequestMapping(value = "/index", method= RequestMethod.POST)
+    @RequestMapping(value = {"/index","/"}, method= RequestMethod.POST)
     public String indexSubmit(@ModelAttribute UserLoginInfo userLoginInfo, Model model){
         model.addAttribute("userLoginInfo",userLoginInfo);
         return "signin";
