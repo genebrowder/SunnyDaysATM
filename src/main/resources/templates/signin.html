@@ -16,7 +16,8 @@
     </script>
 </head>
 <body>
-<p th:text=" 'account' +  ${userLoginInfo.accountNumber}" />
-${userLoginInfo.pin}
+<p th:text=" 'account:     ' +  ${userLoginInfo.accountNumber}" />
+<p th:text=" 'account:     ' +  ${userLoginInfo.pin}" />
+
 </body>
 </html>
