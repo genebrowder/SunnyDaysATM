@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Created by genebrowder on 3/3/16.
  */
 
-// Sam's Test Comment
+// Sam's Test Comment here.
 
 @Controller
 public class IndexController {
