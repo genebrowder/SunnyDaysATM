@@ -13,9 +13,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class CheckingOrSavingsController {
 
+    @RequestMapping(value = {"/checkings_or_savings"}, method= RequestMethod.GET)
+    public String checkingOrSavings(Model model){
+        model.addAttribute("accountChoice",new AccountChoice());
+        return "checkings_or_savings";
+
+    }
+
     @RequestMapping(value = {"/checkings_or_savings"}, method= RequestMethod.POST)
     public String checkingOrSavingsSubmit(@ModelAttribute AccountChoice accountChoice, Model model){
-        model.addAttribute("accountChoice",new AccountChoice());
+        model.addAttribute("accountChoice",accountChoice);
         return "signin";
 
     }

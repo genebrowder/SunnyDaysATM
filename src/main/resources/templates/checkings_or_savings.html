@@ -26,18 +26,31 @@
     </div>
 
     <!-- Example row of columns -->
-    <div class="form-signin" action="#" th:action="@{/checkings_or_savings}" th:object="${accountChoice}"  method="post">
-        <div class="col-xs-2" align="left">
-            <p><a class="btn btn-primary" href="#" type="submit"  th:field="*{choice}" >Checkings &raquo;</a></p>
-        </div>
-        <div class="col-xs-5" >
 
-        </div>
-        <div class="col-xs-5">
-            <p><a class="btn btn-primary" href="#" type="submit"  th:field="*{choice}" >Savings &raquo;</a></p>
+    <form class="form-signin"  th:action="@{/checkings_or_savings}" th:object="${accountChoice}"  method="post">
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-4" align="center">
+
+                <input type="radio" name="choice"  th:id="choice" th:field="*{choice}"  th:value="checkings"  value="checkings" checked="true"/>    Checking
+                <br/>
+                <br/>
+                <br/>
+
+                <input type="radio" name="choice"  th:id="choice" th:field="*{choice}" th:value="savings"  value="savings" />     Savings
+            </div>
         </div>
 
-    </div>
+
+            <br/>
+            <br/>
+            <br/>
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-4" align="center">
+        <button class="btn btn-primary"  type="submit"   >Submit</button>
+            </div>
+        </div>
+    </form>
+
 
 
 </div> <!-- /container -->
