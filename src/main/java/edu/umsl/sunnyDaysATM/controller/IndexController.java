@@ -1,5 +1,6 @@
 package edu.umsl.sunnyDaysATM.controller;
 
+import edu.umsl.sunnyDaysATM.domain.AccountChoice;
 import edu.umsl.sunnyDaysATM.domain.UserLoginInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,10 +22,12 @@ public class IndexController {
     }
     @RequestMapping(value = {"/index","/"}, method= RequestMethod.POST)
     public String indexSubmit(@ModelAttribute UserLoginInfo userLoginInfo, Model model){
-        model.addAttribute("userLoginInfo",userLoginInfo);
-        return "signin";
+        model.addAttribute("accountChoice",new AccountChoice());
+        return "checkings_or_savings";
 
     }
+
+
 
 
 
