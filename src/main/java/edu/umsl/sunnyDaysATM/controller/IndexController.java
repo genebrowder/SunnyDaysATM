@@ -22,8 +22,14 @@ public class IndexController {
     }
     @RequestMapping(value = {"/index","/"}, method= RequestMethod.POST)
     public String indexSubmit(@ModelAttribute UserLoginInfo userLoginInfo, Model model){
-        model.addAttribute("accountChoice",new AccountChoice());
-        return "checkings_or_savings";
+        if(userLoginInfo.getAccountNumber().equals("123")){
+            model.addAttribute("userLoginInfo",new UserLoginInfo());
+            return "index";
+        }
+        else{
+            model.addAttribute("accountChoice",new AccountChoice());
+            return "checkings_or_savings";
+        }
 
     }
 
