@@ -31,9 +31,9 @@
         <form class="form-signin" action="#" th:action="@{/index}" th:object="${userLoginInfo}"  method="post">
             <h2 class="form-signin-heading">Please sign in</h2>
             <label class="sr-only">Account</label>
-            <input type="text" th:id="inputEmail" th:field="*{accountNumber}" class="form-control" placeholder="Account" />
+            <input type="text" th:id="accountNumber" th:field="*{accountNumber}" class="form-control" placeholder="Account"   />
             <label  class="sr-only">Pin</label>
-            <input type="password" th:id="inputPassword" th:field="*{pin}" class="form-control" placeholder="Pin"  />
+            <input type="password" th:id="pin" th:field="*{pin}" class="form-control" placeholder="Pin"   />
 
             <button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit">Sign in</button>
         </form>

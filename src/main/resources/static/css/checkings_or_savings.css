@@ -34,6 +34,10 @@ body {
 .form-signin .checkbox {
     font-weight: normal;
 }
+.form-signin .radio {
+    font-size: 21px;
+    color:white
+}
 .form-signin .form-control {
     position: relative;
     height: auto;
@@ -51,6 +55,7 @@ body {
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 }
+
 .form-signin input[type="password"] {
     margin-bottom: 10px;
     border-top-left-radius: 0;
