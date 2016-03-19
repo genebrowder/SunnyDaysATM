@@ -1,0 +1,31 @@
+show databases;
+
+create database sunny_days_atm;
+
+use sunny_days_atm;
+
+create table `user_log_info` (
+  `id`             INT(11)     NOT NULL AUTO_INCREMENT,
+  `account_number` VARCHAR(10) NOT NULL,
+  `pin`            VARCHAR(4)  NOT NULL,
+  PRIMARY KEY (`id`)
+
+);
+
+show tables;
+
+
+desc `user_log_info`;
+
+insert into user_log_info (account_number, pin)
+values("123456","4321")  ;
+insert into user_log_info (account_number, pin)
+values("234567","4321")  ;
+insert into user_log_info (account_number, pin)
+values("345678","4321")  ;
+insert into user_log_info (account_number, pin)
+values("456789","4321")  ;
+insert into user_log_info (account_number, pin)
+values("567890","4321")  ;
+
+select * from user_log_info;

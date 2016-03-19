@@ -1,7 +1,8 @@
 package edu.umsl.sunnyDaysATM.controller;
 
-import edu.umsl.sunnyDaysATM.domain.AccountChoice;
+import edu.umsl.sunnyDaysATM.AccountChoice;
 import edu.umsl.sunnyDaysATM.domain.UserLoginInfo;
+import edu.umsl.sunnyDaysATM.manageUserLoginfo.ManageUserLoginfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,13 +23,14 @@ public class IndexController {
     }
     @RequestMapping(value = {"/index","/"}, method= RequestMethod.POST)
     public String indexSubmit(@ModelAttribute UserLoginInfo userLoginInfo, Model model){
-        if(userLoginInfo.getAccountNumber().equals("123")){
-            model.addAttribute("userLoginInfo",new UserLoginInfo());
-            return "index";
-        }
-        else{
+
+        if(ManageUserLoginfo.isValiduser(userLoginInfo)){
             model.addAttribute("accountChoice",new AccountChoice());
             return "checkings_or_savings";
+        }
+        else{
+            model.addAttribute("userLoginInfo",new UserLoginInfo());
+            return "index";
         }
 
     }
