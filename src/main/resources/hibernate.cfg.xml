@@ -11,6 +11,9 @@
         <property name="show_sql">false</property>
         <property name="format_sql">false</property>
         <mapping class="edu.umsl.sunnyDaysATM.domain.UserLoginInfo"/>
+        <mapping class="edu.umsl.sunnyDaysATM.domain.User"/>
+        <mapping class="edu.umsl.sunnyDaysATM.domain.Account"/>
+        <mapping class="edu.umsl.sunnyDaysATM.domain.Transaction"/>
     </session-factory>
   <!--   <session-factory>
    <property name="hibernate.archive.autodetection">class,hbm</property>

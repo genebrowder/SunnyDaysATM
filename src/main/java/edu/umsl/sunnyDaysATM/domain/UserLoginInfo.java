@@ -1,27 +1,28 @@
 package edu.umsl.sunnyDaysATM.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by genebrowder on 3/10/16.
  */
 @Entity
 @Table(name="USER_LOGIN_INFO")
-public class UserLoginInfo {
+public class UserLoginInfo implements Serializable {
 
 
     private static final long serialVersionUID = 336542947443965225L;
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name="ID")
+    @Column(name="USER_LOGIN_INFO_ID")
     @Id
     private long id;
 
     @Column(name="ACCOUNT_NUMBER")
-    String accountNumber;
+    private String accountNumber;
 
 
     @Column(name="PIN")
-    String pin;
+    private String pin;
 
 
 

@@ -1,5 +1,6 @@
-package edu.umsl.sunnyDaysATM.manageUserLoginfo;
+package edu.umsl.sunnyDaysATM.manageUser;
 
+import edu.umsl.sunnyDaysATM.domain.User;
 import edu.umsl.sunnyDaysATM.domain.UserLoginInfo;
 import org.hibernate.*;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -10,28 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by genebrowder on 3/19/16.
+ * Created by genebrowder on 3/20/16.
  */
-public class ManageUserLoginfo {
+public class ManageUser {
 
     private static SessionFactory factory;
 
-    public static boolean isValiduser(UserLoginInfo UserLoginInfo){
-        List<UserLoginInfo> alluserLoginInfoList =   getAllUserLoginInfo();
-
-        for(UserLoginInfo userLogininfo: alluserLoginInfoList)   {
-
-            if ((UserLoginInfo.getAccountNumber().equals(userLogininfo.getAccountNumber()))  &&
-                    (UserLoginInfo.getPin().equals(userLogininfo.getPin()))  ){
-
-                return true;
-            }
-        }
-
-        return false;
-
-    }
-    private static List getAllUserLoginInfo(){
+    public User getOneUser(UserLoginInfo userLoginInfo){
 
         //Hibernate Code  ----------------------------------------------------------
 
@@ -42,8 +28,6 @@ public class ManageUserLoginfo {
 
         ServiceRegistry serviceRegistry = serviceRegistryBuilder.build();
 
-        //Hibernate Code  ----------------------------------------------------------
-
         factory= new Configuration().configure().buildSessionFactory(serviceRegistry);
 
         //Hibernate Code  ----------------------------------------------------------
@@ -52,19 +36,33 @@ public class ManageUserLoginfo {
 
         Transaction tx = null;
 
-        List allUserLoginInfoList = new ArrayList();
+        List<UserLoginInfo> allUserLoginInfoList = new ArrayList();
+
+        User user = null;
+
         try{
             tx = session.beginTransaction();
 
             Query queryResult = session.createQuery("from UserLoginInfo");
 
 
-            allUserLoginInfoList = queryResult.list();
-            for (int i = 0; i < allUserLoginInfoList.size(); i++) {
-                UserLoginInfo userLoginInfo = (UserLoginInfo) allUserLoginInfoList.get(i);
-                System.out.println("userLoginInfo["+userLoginInfo.getId()+"] account ="+userLoginInfo.getAccountNumber());
-                System.out.println("userLoginInfo["+userLoginInfo.getId()+"] address ="+userLoginInfo.getPin());
+             allUserLoginInfoList = queryResult.list();
+
+            long userId=0;
+
+            for (UserLoginInfo userLoginInfoFromDatabase : allUserLoginInfoList) {
+                System.out.println("userLoginInfo["+userLoginInfoFromDatabase.getId()+"] account ="+userLoginInfoFromDatabase.getAccountNumber());
+                System.out.println("userLoginInfo["+userLoginInfoFromDatabase.getId()+"] address ="+userLoginInfoFromDatabase.getPin());
+
+                if ((userLoginInfoFromDatabase.getAccountNumber().equals(userLoginInfo.getAccountNumber()))  &&
+                        (userLoginInfoFromDatabase.getPin().equals(userLoginInfo.getPin()))  ){
+
+                    userId = userLoginInfoFromDatabase.getId();
+                }
             }
+
+            user = (User) session.get(User.class, userId) ;
+
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -73,7 +71,10 @@ public class ManageUserLoginfo {
             session.close();
         }
 
-        return allUserLoginInfoList;
+        return user;
+
+
     }
+
 
 }
