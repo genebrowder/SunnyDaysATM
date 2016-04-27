@@ -1,6 +1,6 @@
 package edu.umsl.sunnyDaysATM.controller;
 
-import edu.umsl.sunnyDaysATM.domain.AccountChoice;
+import edu.umsl.sunnyDaysATM.AccountChoice;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;

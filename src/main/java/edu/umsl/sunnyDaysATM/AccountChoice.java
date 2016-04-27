@@ -1,4 +1,4 @@
-package edu.umsl.sunnyDaysATM.domain;
+package edu.umsl.sunnyDaysATM;
 
 /**
  * Created by genebrowder on 3/13/16.
