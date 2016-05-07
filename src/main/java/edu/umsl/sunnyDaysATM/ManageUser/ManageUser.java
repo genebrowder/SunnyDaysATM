@@ -1,4 +1,4 @@
-package edu.umsl.sunnyDaysATM.manageUser;
+package edu.umsl.sunnyDaysATM.ManageUser;
 
 import edu.umsl.sunnyDaysATM.domain.User;
 import edu.umsl.sunnyDaysATM.domain.UserLoginInfo;
