@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by genebrowder on 3/20/16.
@@ -37,8 +36,14 @@ public class User implements Serializable {
     @Column(name="PHONE_NUMBER")
     private String phoneNumber;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(cascade=CascadeType.ALL, mappedBy = "user",fetch = FetchType.EAGER)
     private List<Account> accounts = new ArrayList<>();
+
+    public User(){
+
+    }
+
+
 
     public long getId() {
         return id;
