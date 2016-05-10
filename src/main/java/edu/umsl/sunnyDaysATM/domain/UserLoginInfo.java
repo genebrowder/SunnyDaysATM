@@ -13,7 +13,7 @@ public class UserLoginInfo implements Serializable {
 
     private static final long serialVersionUID = 336542947443965225L;
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name="USER_LOGIN_INFO_ID")
+    @Column(name="USER_LOGIN_INFO_ID", unique=true, nullable=false)
     @Id
     private long id;
 
@@ -24,7 +24,19 @@ public class UserLoginInfo implements Serializable {
     @Column(name="PIN")
     private String pin;
 
+    //Map one to one association between USER_LOGIN_INFO and USER_ID
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="USER_ID")
+    private User user;
 
+    public UserLoginInfo() {
+    }
+
+    public UserLoginInfo(String accountNumber, String pin, User user) {
+        this.accountNumber = accountNumber;
+        this.pin = pin;
+        this.user = user;
+    }
 
     public long getId() {
         return id;
@@ -48,5 +60,13 @@ public class UserLoginInfo implements Serializable {
 
     public void setPin(String pin) {
         this.pin = pin;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

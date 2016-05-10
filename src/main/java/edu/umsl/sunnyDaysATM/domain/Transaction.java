@@ -18,7 +18,7 @@ public class Transaction {
     @Id
     private long id;
 
-    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "ACCOUNT_ID", nullable = false)
     private Account account;
 

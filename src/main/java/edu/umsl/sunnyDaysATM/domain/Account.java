@@ -6,18 +6,19 @@ package edu.umsl.sunnyDaysATM.domain;
  */
 
 import javax.persistence.*;
-import java.io.IOException;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 
 @Entity
 @Table(name="ACCOUNT")
-public abstract class Account implements Serializable {
+public class Account implements Serializable {
 
     private static final long serialVersionUID = 336542947443965225L;
 
@@ -29,22 +30,23 @@ public abstract class Account implements Serializable {
     @Column(name="ACCOUNT_NUMBER")
     private int accountNumber;
 
-    @Column(name="ACCOUNT_TYPE_NUMBER")
+    @Column(name="TYPE_OF_ACCOUNT_NUMBER")
     private int typeOfAccountNumber;
 
-    @Column(name="ACCOUNT_TYPE_NAME")
+    @Column(name="TYPE_OF_ACCOUNT_NAME")
     private String typeOfAccountName;
 
-    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "USER_ID", nullable = false)
     private User user;
 
 
-    @OneToMany(fetch = FetchType.LAZY)
+//    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(cascade=CascadeType.ALL, mappedBy = "account",fetch = FetchType.EAGER)
     private List<Transaction> transactions = new ArrayList<Transaction>();
 
-    Date lastDateOfYear = new GregorianCalendar(2016, Calendar.DECEMBER, 31).getTime();
-
+//    Date lastDateOfYear = new GregorianCalendar(2016, Calendar.DECEMBER, 31).getTime();
+//
     public Account() {
 
     }
@@ -97,13 +99,13 @@ public abstract class Account implements Serializable {
         this.transactions = transactions;
     }
 
-    public Date getLastDateOfYear() {
-        return lastDateOfYear;
-    }
-
-    public void setLastDateOfYear(Date lastDateOfYear) {
-        this.lastDateOfYear = lastDateOfYear;
-    }
+//    public Date getLastDateOfYear() {
+//        return lastDateOfYear;
+//    }
+//
+//    public void setLastDateOfYear(Date lastDateOfYear) {
+//        this.lastDateOfYear = lastDateOfYear;
+//    }
 
     //    public double getBalance() {
 //        return getLastTransaction().getBalance();
