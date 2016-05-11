@@ -13,12 +13,12 @@ public class Transaction {
     private static final long serialVersionUID = 336542947443965225L;
 
 
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name="TRANSACTION_ID")
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name="TRANSACTION_ID", unique = true, nullable = false)
     @Id
     private long id;
 
-    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "ACCOUNT_ID", nullable = false)
     private Account account;
 
@@ -34,6 +34,16 @@ public class Transaction {
     @Column(name="AMOUNT")
     private double amount;
 
+    public Transaction() {
+    }
+
+    public Transaction(Account account, String typeOfTransaction, Date dateOfTranaction, double balance, double amount) {
+        this.account = account;
+        this.typeOfTransaction = typeOfTransaction;
+        this.dateOfTranaction = dateOfTranaction;
+        this.balance = balance;
+        this.amount = amount;
+    }
 
     public long getId() {
         return id;
