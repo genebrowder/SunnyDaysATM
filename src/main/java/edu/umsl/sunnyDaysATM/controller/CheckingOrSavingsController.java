@@ -29,6 +29,7 @@ public class CheckingOrSavingsController {
              return "checking_options";
          }else
          {
+        	 model.addAttribute("accountChoice", accountChoice);
              return "savings_options";
          }
 
