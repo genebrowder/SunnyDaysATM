@@ -122,6 +122,31 @@ public class UserLoginInfoDao {
         return userLoginInfoID;
     }
 
+    public static void updateUserLoginInfo(UserLoginInfo UserLoginInfo) {
+
+        Session session = getSession();
+        Transaction tx = null;
+        long userLoginInfoID = 0;
+        try {
+            tx = session.beginTransaction();
+
+            //This allows a user and a password to be added only once
+            if (!isValiduser(UserLoginInfo)) {
+                 session.update(UserLoginInfo);
+            }
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+
+    }
+
+
+
 
     private static Session getSession() {
         //Hibernate Code  ----------------------------------------------------------
