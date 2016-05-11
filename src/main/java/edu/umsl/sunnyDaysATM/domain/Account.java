@@ -164,11 +164,17 @@ public class Account implements Serializable {
                 savingsTransactions.add(transaction);
             }
         }
-        long lastId = 0;
+        Date tempDate = null;
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+            tempDate = sdf.parse("12-31-2015");
+        }  catch(ParseException ex){
+            ex.printStackTrace();
+        }
         Transaction lastSavingsTransaction = new Transaction();
         for (Transaction transaction : savingsTransactions) {
-            if (transaction.getId() > lastId) {
-                lastId = transaction.getId();
+            if (transaction.getDateOfTranaction().compareTo(tempDate) > 0) {
+                tempDate =  transaction.getDateOfTranaction();
                 lastSavingsTransaction = transaction;
             }
         }

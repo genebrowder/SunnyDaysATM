@@ -13,7 +13,7 @@ public class Transaction {
     private static final long serialVersionUID = 336542947443965225L;
 
 
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="TRANSACTION_ID", unique = true, nullable = false)
     @Id
     private long id;
