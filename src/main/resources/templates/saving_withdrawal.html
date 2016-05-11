@@ -1,10 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1" />
-<title>Insert title here</title>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Savings Withdrawal</title>
+    <!-- CSS -->
+    <link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" href="../static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/index.css}" href="../static/css/signin.css" rel="stylesheet"  type="text/css"/>
+
+    <!-- JavaScript -->
+    <script th:src="@{/lib/jquery/jquery-2.2.1.min.js}" src="../static/lib/jquery/jquery-2.2.1.min.js" type="application/javascript"></script>
+
+</head>
 </head>
 <body>
-Withdrawal
+<!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <h1>Welcome to Sunny Days Bank ATM</h1>
+        <p><div class="btn"> Savings for a Sunny Day </div></p>
+    </div>
+
+    <!--<form class="form-signin"  th:action="@{/checkings_or_savings}" th:object="${accountChoice}"  method="post"> -->
+
+    <!-- Example row of columns -->
+    <form action="/saving_withdrawal" method="post">
+
+        <label class="sr-only">dateOfDeposit</label>
+        Enter Date of Witchdrawal:
+        <input type="text" name="dateOfDeposit"/>
+        <label class="sr-only">amountOfDeposit</label>
+        Enter Amount of Withdrawal:
+        <input type="text" name="amountOfDeposit"/>
+
+        <input type="submit" name="action" value="SUBMIT"/>
+
+        <div class="row">
+            <div class="col-xs-7">  </div>
+            <div class="col-xs-5"  align="left">
+
+            </div>
+
+        </div>
+        </form>
 </body>
 </html>
