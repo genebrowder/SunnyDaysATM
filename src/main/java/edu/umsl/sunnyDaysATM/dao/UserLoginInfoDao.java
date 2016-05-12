@@ -85,7 +85,7 @@ public class UserLoginInfoDao {
             allUserLoginInfoList = queryResult.list();
             for (int i = 0; i < allUserLoginInfoList.size(); i++) {
                 UserLoginInfo userLoginInfo = (UserLoginInfo) allUserLoginInfoList.get(i);
-                System.out.println("userLoginInfo[" + userLoginInfo.getId() + "] userAccountNumber =" + userLoginInfo.getAccountNumber());
+                //System.out.println("userLoginInfo[" + userLoginInfo.getId() + "] userAccountNumber =" + userLoginInfo.getAccountNumber());
                 //System.out.println("userLoginInfo["+userLoginInfo.getId()+"] password ="+userLoginInfo.getPassword());
             }
             tx.commit();
