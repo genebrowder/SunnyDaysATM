@@ -68,7 +68,7 @@ public class CheckingWithdrawalController {
         model.addAttribute("withdrawalAmount",checkingAccount.printNumberAsCurrency(transaction.getAmount()) );
         model.addAttribute("balance",checkingAccount.printNumberAsCurrency(transaction.getBalance()) );
 
-        return "checking_withdrawal_status";
+        return "checking_withdrawal_complete";
 
     }
 }
