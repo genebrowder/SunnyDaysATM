@@ -64,9 +64,9 @@ public class CheckingDepositController {
 
         Transaction transaction = checkingAccount.getLastCheckingTransaction();
 
-        model.addAttribute("dateDepositAdded",transaction.getDateOfTranaction()) ;
-        model.addAttribute("depositAmount",transaction.getAmount()) ;
-        model.addAttribute("balance",transaction.getBalance()) ;
+        model.addAttribute("dateDepositAdded",checkingAccount.getDateAsString(transaction.getDateOfTranaction())) ;
+        model.addAttribute("depositAmount",checkingAccount.printNumberAsCurrency(transaction.getAmount()) );
+        model.addAttribute("balance",checkingAccount.printNumberAsCurrency(transaction.getBalance())) ;
 
         return "checking_deposit_status";
 

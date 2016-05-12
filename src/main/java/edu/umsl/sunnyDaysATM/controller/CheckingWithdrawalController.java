@@ -64,9 +64,9 @@ public class CheckingWithdrawalController {
 
         Transaction transaction = checkingAccount.getLastCheckingTransaction();
 
-        model.addAttribute("dateOfWithdrawal",transaction.getDateOfTranaction()) ;
-        model.addAttribute("withdrawalAmount",transaction.getAmount()) ;
-        model.addAttribute("balance",transaction.getBalance()) ;
+        model.addAttribute("dateOfWithdrawal",checkingAccount.getDateAsString(transaction.getDateOfTranaction())) ;
+        model.addAttribute("withdrawalAmount",checkingAccount.printNumberAsCurrency(transaction.getAmount()) );
+        model.addAttribute("balance",checkingAccount.printNumberAsCurrency(transaction.getBalance()) );
 
         return "checking_withdrawal_status";
 

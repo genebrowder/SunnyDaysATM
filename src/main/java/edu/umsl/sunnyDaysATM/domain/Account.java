@@ -5,6 +5,8 @@ package edu.umsl.sunnyDaysATM.domain;
  * and open the template in the editor.
  */
 
+import edu.umsl.sunnyDaysATM.TransactionAsStrings;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.text.DateFormat;
@@ -213,31 +215,37 @@ public class Account implements Serializable {
             Date lastDateOfYear = new GregorianCalendar(2016, Calendar.DECEMBER, 31).getTime();
         return lastDateOfYear;
     }
-//
-//    public void setLastDateOfYear(Date lastDateOfYear) {
-//        this.lastDateOfYear = lastDateOfYear;
-//    }
-
-    //    public double getBalance() {
-//        return getLastTransaction().getBalance();
-//    }
 
 
-    public String getLastCheckingTransactionDateModifiedAsString() {
+    public String getDateAsString(Date originalDate) {
 
-        try {
-            DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
+
+            String[] formatStrings = {"yyyy-MM-dd HH:mm:ss.S", "EEE MMM dd HH:mm:ss z yyyy", "EEE MMM dd HH:mm:ss zzz YYYY"};
             DateFormat targetFormat = new SimpleDateFormat("MM-dd-yyyy");
-            Date date = originalFormat.parse(getLastCheckingTransaction().getDateOfTranaction().toString());
-            String formattedDate = targetFormat.format(date);
-            return formattedDate;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+            String formattedDate = "";
+            for (String formatString : formatStrings)
+            {
+                System.out.println("Trying: "+formatString);
+
+                try {
+                    SimpleDateFormat parserSDF = new SimpleDateFormat(formatString, Locale.ENGLISH);
+                    Date tempDate = parserSDF.parse(originalDate.toString());
+                    formattedDate  = targetFormat.format(tempDate);
+                    return formattedDate;
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+
 
         return null;
 
     }
+
+
 
 
 
@@ -278,304 +286,41 @@ public class Account implements Serializable {
         return null;
     }
 
-//    public Date getLastDayModifiedAsDate() {
-//
-//        try {
-//            DateFormat originalFormat = new SimpleDateFormat("EEE MMM d HH:mm:ss z yyyy");
-//            DateFormat targetFormat = new SimpleDateFormat("MM-dd-yyyy");
-//            Date date = originalFormat.parse(getLastTransaction().getDateOfTranaction().toString());
-//            String formattedDate = targetFormat.format(date);
-//            DateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
-//            Date lastDayModified = null;
-//
-//            try {
-//
-//                lastDayModified = formatter.parse(formattedDate);
-//
-//            } catch (ParseException e) {
-//                System.out.println("Unable to parse " + formattedDate);
-//            }
-//            return lastDayModified;
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return null;
-//
-//    }
-
-    /**
-     *
-     */
-
-
-//    public List<Transaction> getTransactions() {
-//        return transactions;
-//    }
-//
-//    public void setTransactions(List<Transaction> transactions) {
-//        this.transactions = transactions;
-//    }
-//
-//    private Transaction getLastTransaction() {
-//        Transaction transaction = transactions.get(transactions.size() - 1);
-//
-//        return transaction;
-//    }
-
-//    public void menu() {
-//        try {
-//            int input = 0;
-//
-//            do {
-//                try {
-//                    final String os = System.getProperty("os.name");
-//
-//                    if (os.contains("Windows")) {
-//                        Runtime.getRuntime().exec("cls");
-//                    } else {
-//                        Runtime.getRuntime().exec("clear");
-//                    }
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//
-//                System.out.println("*******************************************");
-//                System.out.println("***     Choose a transactions Type:     ***");
-//                System.out.println("***      1). Deposit                    *** ");
-//                System.out.println("***      2). Withdraw                   ***");
-//                System.out.println("***      3). Check Balance              ***");
-//                System.out.println("***      4). History                    ***");
-//                System.out.println("***      5). Exit                       ***");
-//                System.out.println("******************************************");
-//
-//                Scanner sc = new Scanner(System.in);
-//                input = sc.nextInt();
-//
-//
-//                if (input == 1) {
-//
-//                    deposit();
-//
-//                } else if (input == 2) {
-//
-//                    withdraw();
-//
-//                } else if (input == 3) {
-//
-//                    checkBalance();
-//                }
-//                else if(input == 4)
-//                {
-//                    history();
-//                }
-//            } while (input != 5);
-//        } catch (Exception e) {
-//
-//        }
-//    }
-
-//    public void processTransaction(Transaction transaction) {
-//        transactions.add(transaction);
-//    }
-
-//    public void deposit(Transaction transaction) {
-//        processTransaction(transaction);
-//
-//    }
-
-//    public void deposit() {
-//        try {
-//            final String os = System.getProperty("os.name");
-//
-//            if (os.contains("Windows")) {
-//                Runtime.getRuntime().exec("cls");
-//            } else {
-//                Runtime.getRuntime().exec("clear");
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        Scanner sc = new Scanner(System.in);
-//
-//        System.out.println("\nYour current balance is: " + printNumberAsCurrency(getBalance()));
-//
-//        System.out.println("\n\tA DEPOSIT can be made on or after " + getLastDayModifiedAsString() + ". ");
-//        System.out.println("\n\tOr on or before 12-31-2015. ");
-//        System.out.println("\nPlease enter the Date of the Deposit (mm-dd-yyyy):");
-//        String inputDate = sc.nextLine();
-//        DateFormat df = new SimpleDateFormat("MM-dd-yyyy");
-//        Date dateOfDeposit = null;
-//        try {
-//
-//            dateOfDeposit = df.parse(inputDate);
-//
-//        } catch (ParseException e) {
-//            System.out.println("Unable to parse " + inputDate);
-//        }
-//
-//        System.out.println("Enter the amount to deposit: ");
-//        double deposit = sc.nextDouble();
-//
-//        if (getLastDayModifiedAsDate().compareTo(dateOfDeposit) <= -0) {
-//
-//            if (dateOfDeposit.compareTo(lastDateOfYear) <= 0) {
-//
-//
-//
-//                if (deposit >= 0.0) {
-//                    Transaction transaction = new Transaction();
-//                    transaction.setTypeOfTransaction("DEPOSIT");
-//                    transaction.setAmount(deposit);
-//                    transaction.setDateOfTranaction(dateOfDeposit);
-//
-//                    transaction.setBalance(getBalance() + transaction.getAmount());
-//
-//                    processTransaction(transaction);
-//
-//                    System.out.println("\n\tA DEPOSIT was made to the account.");
-//
-//                    System.out.println("\tIt now has a balance of:  " + printNumberAsCurrency(getBalance()));
-//
-//                    System.out.println("\n\tTHANK YOU!  ");
-//                } else {
-//                    System.out.println("\n\tError. Invalid DEPOSIT amount. ");
-//                }
-//            } else {
-//                System.out.println("\n\tError. The DEPOSIT must be done on or before 12-31-2015. ");
-//            }
-//        } else {
-//            System.out.println("\n\tError. TThe DEPOSIT must be done on or after "+getLastDayModifiedAsString()+". ");
-//        }
-//
-//    }
-
-//    public void withdraw() {
-//
-//        try {
-//            final String os = System.getProperty("os.name");
-//
-//            if (os.contains("Windows")) {
-//                Runtime.getRuntime().exec("cls");
-//            } else {
-//                Runtime.getRuntime().exec("clear");
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        Scanner sc = new Scanner(System.in);
-//
-//        System.out.println("\nYour current balance is: " + printNumberAsCurrency(getBalance()));
-//
-//        System.out.println("\n\tA WITHDRAWAL can be made on or after " + getLastDayModifiedAsString() + ". ");
-//        System.out.println("\n\tOr on or before 12-31-2015. ");
-//        System.out.println("\nPlease enter the Date of the Withdrawl (mm-dd-yyyy):");
-//        String inputDate = sc.nextLine();
-//        DateFormat df = new SimpleDateFormat("MM-dd-yyyy");
-//        Date dateOfWithdrawal = null;
-//        try {
-//
-//            dateOfWithdrawal = df.parse(inputDate);
-//
-//        } catch (ParseException e) {
-//            System.out.println("Unable to parse " + inputDate);
-//        }
-//
-//        System.out.println("Enter the amount to withdrawal: ");
-//        double withdrawal = sc.nextDouble();
-//
-//        if (getLastDayModifiedAsDate().compareTo(dateOfWithdrawal) <= -0) {
-//
-//            if (dateOfWithdrawal.compareTo(lastDateOfYear) <= 0) {
-//
-//
-//                if ((withdrawal >= 0.0) && (withdrawal <= getBalance())){
-//                    Transaction transaction = new Transaction();
-//                    transaction.setTypeOfTransaction("WITHDRAWAL");
-//                    transaction.setAmount(withdrawal);
-//                    transaction.setDateOfTranaction(dateOfWithdrawal);
-//
-//                    transaction.setBalance(getBalance() - transaction.getAmount());
-//
-//                    processTransaction(transaction);
-//
-//                    System.out.println("\n\tA Withdrawal was made to the account.");
-//
-//                    System.out.println("\tIt now has a balance of:  " + printNumberAsCurrency(getBalance()));
-//
-//                    System.out.println("\n\tTHANK YOU!  ");
-//                } else {
-//                    System.out.println("\n\tError. Invalid WITHDRAWAL amount. ");
-//                }
-//            } else {
-//                System.out.println("\n\tError. The WITHDRAWAL must be done on or before 12-31-2015. ");
-//            }
-//        } else {
-//            System.out.println("\n\tError. TThe WITHDRAWAL must be done on or after "+getLastDayModifiedAsString()+". ");
-//        }
-//    }
-
-//    public void checkBalance() throws IOException {
-//        try {
-//            final String os = System.getProperty("os.name");
-//
-//            if (os.contains("Windows")) {
-//                Runtime.getRuntime().exec("cls");
-//            } else {
-//                Runtime.getRuntime().exec("clear");
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        Scanner sc = new Scanner(System.in);
-//
-//        System.out.println("\n\tThe balance can be checked for on or after " + getLastDayModifiedAsString() + ". ");
-//        System.out.println("\n\tOr on or before 12-31-2015. ");
-//        System.out.println("\nPlease enter the Date to check the balance (mm-dd-yyyy):");
-//        String inputDate = sc.nextLine();
-//        DateFormat df = new SimpleDateFormat("MM-dd-yyyy");
-//        Date dateToCheckBalance = null;
-//        try {
-//
-//            dateToCheckBalance = df.parse(inputDate);
-//
-//
-//        } catch (ParseException e) {
-//            System.out.println("Unable to parse " + inputDate);
-//        }
-//
-//
-//    }
-
-
-//    public void history(){
-//        try {
-//            final String os = System.getProperty("os.name");
-//
-//            if (os.contains("Windows")) {
-//                Runtime.getRuntime().exec("cls");
-//            } else {
-//                Runtime.getRuntime().exec("clear");
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        for (Iterator iterator = transactions.iterator(); iterator.hasNext();)
-//        {
-//            Transaction localTransaction = (Transaction)iterator.next();
-//            System.out.println(localTransaction.getTypeOfTransaction()+"\t\t"+formatTheDateAsString(localTransaction.getDateOfTranaction())+"\t\t"+ printNumberAsCurrency(localTransaction.getAmount())+"\t\t" + printNumberAsCurrency(localTransaction.getBalance())) ;
-//        }
-//    }
 
     public String printNumberAsCurrency(double number) {
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         String moneyString = formatter.format(number);
 
         return moneyString;
+    }
+
+    public List<TransactionAsStrings> formatTransactionList(List<Transaction> transactions)  {
+
+        List<TransactionAsStrings> tempTransactionList = new ArrayList<TransactionAsStrings>();
+
+        TransactionAsStrings tempTransaction = new TransactionAsStrings();
+        tempTransaction.setTypeOfTransaction("TYPE/");
+        tempTransaction.setDateOfTranaction("DATE/");
+        tempTransaction.setAmount("AMOUNT/");
+        tempTransaction.setBalance("BALANCE");
+
+        tempTransactionList.add(tempTransaction) ;
+
+
+        for (Transaction transaction : transactions) {
+
+            tempTransaction = new TransactionAsStrings();
+            tempTransaction.setTypeOfTransaction(transaction.getTypeOfTransaction()+"/");
+            tempTransaction.setDateOfTranaction(getDateAsString(transaction.getDateOfTranaction())+"/");
+            tempTransaction.setAmount(printNumberAsCurrency(transaction.getAmount())+"/");
+            tempTransaction.setBalance(printNumberAsCurrency(transaction.getBalance()));
+
+            tempTransactionList.add(tempTransaction) ;
+        }
+
+        return tempTransactionList;
+
+
     }
 
 }

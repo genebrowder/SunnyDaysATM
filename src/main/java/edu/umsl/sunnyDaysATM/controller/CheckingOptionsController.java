@@ -1,7 +1,7 @@
 package edu.umsl.sunnyDaysATM.controller;
 
+import edu.umsl.sunnyDaysATM.TransactionAsStrings;
 import edu.umsl.sunnyDaysATM.domain.Account;
-import edu.umsl.sunnyDaysATM.domain.Transaction;
 import edu.umsl.sunnyDaysATM.domain.UserLoginInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,25 +47,24 @@ public class CheckingOptionsController {
 
         if(checkingOption.equals("DEPOSIT")) {
 
-            String lastCheckingTransactionDate = checkingAccount.getLastCheckingTransactionDateModifiedAsString();
+            String lastCheckingTransactionDate = checkingAccount.getDateAsString(checkingAccount.getLastCheckingTransactionDate());
             model.addAttribute("lastCheckingTransactionDate",lastCheckingTransactionDate) ;
             return "checking_deposit";
         }else if(checkingOption.equals("WITHDRAWAL"))
         {
-            String lastCheckingTransactionDate = checkingAccount.getLastCheckingTransactionDateModifiedAsString();
+            String lastCheckingTransactionDate = checkingAccount.getDateAsString(checkingAccount.getLastCheckingTransactionDate());
             model.addAttribute("lastCheckingTransactionDate",lastCheckingTransactionDate) ;
 
             return "checking_withdrawal";
         }
         else if(checkingOption.equals("BALANCE"))
         {
-            String balance = ""+checkingAccount.getCheckingBalance();
-            model.addAttribute("balance",balance) ;
+            model.addAttribute("balance",checkingAccount.printNumberAsCurrency(checkingAccount.getCheckingBalance()) );
             return "checking_balance";
         }
         else
         {
-            List<Transaction> checkingTransactions= checkingAccount.getCheckingTransactions();
+            List<TransactionAsStrings> checkingTransactions= checkingAccount.formatTransactionList(checkingAccount.getCheckingTransactions());
             model.addAttribute("checkingTransactions",checkingTransactions) ;
             return "checking_transactions";
         }
