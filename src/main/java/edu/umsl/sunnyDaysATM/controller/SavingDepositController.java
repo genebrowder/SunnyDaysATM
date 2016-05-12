@@ -67,7 +67,10 @@ public class SavingDepositController {
 	        model.addAttribute("depositAmount",transaction.getAmount()) ;
 	        model.addAttribute("balance",transaction.getBalance()) ;
 
+
 	        return "saving_deposit_complete";
+
+
 
 	    }
 }
