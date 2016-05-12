@@ -22,7 +22,9 @@
 
 		<!-- Main jumbotron for a primary marketing message or call to action -->
 		<div class="jumbotron">
-			<h1>Welcome to Sunny Days Bank ATM</h1>
+		 <table border="1" style="width:100%;background-color: #ED8F24">  
+		 <tr><td><h1 style="color:white ; font-size: 500%"><div class="row">	
+		 Welcome to Sunny Days Bank ATM</h1></td></tr></table>
 			<p>
 			<div class="btn">Savings for a Sunny Day</div>
 			</p>
@@ -33,37 +35,40 @@
 		<!-- Example row of columns -->
 		<form action="/saving_options" method="post">
 
+
+         <table border="1" style="width:100%;background-color: #ED8F24">
 			<div class="row">
 				<!-- <p th:text=" 'firstName:     ' +  ${firstName}" />
             <p th:text=" 'lastName:     ' +  ${lastName}" />
             First Name: <input type="text" th:value="${firstName}"/> <br/>  -->
 				<div class="col-xs-6" />
 				<div class="col-xs-6" align="left">
-					<input type="submit" name="action" value="DEPOSIT" />
+					<tr><td> <center> <h2><input type="submit" name="action" value="DEPOSIT" /></h2></center></td></tr> 
 				</div>
 			</div>
+			<br />
+		
+			<div class="row">
+				<div class="col-xs-6" />
+				<div class="col-xs-6" align="left">
+					<tr><td> <center> <h2><input type="submit" name="action" value="BALANCE" /></h2></center></td></tr> 
+				</div>
+			</div>	<br />
+			<div class="row">
+				<div class="col-xs-6" />
+				<div class="col-xs-6" align="left">
+				<tr><td> <center> <h2>	<input type="submit" name="action" value="WITHDRAWAL" /></h2></center></td></tr> 
+				</div>
+			</div>
+			
 			<br />
 			<div class="row">
 				<div class="col-xs-6" />
 				<div class="col-xs-6" align="left">
-					<input type="submit" name="action" value="WITHDRAWAL" />
-				</div>
-			</div>
-			<br />
-			<div class="row">
-				<div class="col-xs-6" />
-				<div class="col-xs-6" align="left">
-					<input type="submit" name="action" value="BALANCE" />
-				</div>
-			</div>
-			<br />
-			<div class="row">
-				<div class="col-xs-6" />
-				<div class="col-xs-6" align="left">
-					<input type="submit" name="action" value="TRANSACTIONS" />
+					<tr><td> <center> <h2><input type="submit" name="action" value="TRANSACTIONS" /></h2></center></td></tr> 
 				</div>
 
-			</div>
+			</div></table>
 		</form>
 
 

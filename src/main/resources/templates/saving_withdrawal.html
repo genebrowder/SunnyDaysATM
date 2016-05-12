@@ -16,7 +16,9 @@
 <body>
 <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
-        <h1>Welcome to Sunny Days Bank ATM</h1>
+        <table border="1" style="width:100%;background-color: #ED8F24"> <center>
+		 <tr><td><h1 style="color:white ; font-size: 500%"><div class="row">	
+		 Welcome to Sunny Days Bank ATM</h1></td></tr></center> </table>
         <p><div class="btn"> Savings for a Sunny Day </div></p>
     </div>
 
@@ -25,14 +27,17 @@
     <!-- Example row of columns -->
     <form action="/saving_withdrawal" method="post">
 
-        <label class="sr-only">dateOfDeposit</label>
-        Enter Date of Witchdrawal:
-        <input type="text" name="dateOfDeposit"/>
-        <label class="sr-only">amountOfDeposit</label>
-        Enter Amount of Withdrawal:
-        <input type="text" name="amountOfDeposit"/>
+ <center><label class="sr-only">
+    dateOfDeposit</label>
+    <table border="1" style="width:100%;background-color: #ED8F24"> <tr><td>
+       <h2 style="color:white"> <center>Enter Date of Withdrawal:</center></h2>
+       <center> <input type="text" name="dateOfDeposit"/></center>
+        <center><label class="sr-only">amountOfDeposit</label></center>
+        <center><h2 style="color:white">Enter Amount of Withdrawal:</center></h2>
+       <center> <input type="text" name="amountOfDeposit"/></center>
+<br/>
 
-        <input type="submit" name="action" value="SUBMIT"/>
+        <center><input type="submit" name="action" value="SUBMIT"/></td></tr></center></table>
 
         <div class="row">
             <div class="col-xs-7">  </div>
@@ -40,7 +45,7 @@
 
             </div>
 
-        </div>
+        </div></center>
         </form>
 </body>
 </html>
