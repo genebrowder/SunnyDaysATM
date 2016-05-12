@@ -5,7 +5,7 @@
     <title>Title</title>
     <!-- CSS -->
     <link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" href="../static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link th:href="@{/css/after_signin.css}" href="../static/css/after_signin.css" rel="stylesheet"  type="text/css"/>
+    <link th:href="@{/css/index.css}" href="../static/css/signin.css" rel="stylesheet"  type="text/css"/>
 
     <!-- JavaScript -->
     <script th:src="@{/lib/jquery/jquery-2.2.1.min.js}" src="../static/lib/jquery/jquery-2.2.1.min.js" type="application/javascript"></script>
@@ -16,52 +16,47 @@
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
-        <h1>Checking Withdrawal</h1>
+        <h1>Welcome to Sunny Days Bank ATM</h1>
+        <p><div class="btn"> Savings for a Sunny Day </div></p>
     </div>
 
     <!--<form class="form-signin"  th:action="@{/checkings_or_savings}" th:object="${accountChoice}"  method="post"> -->
 
     <!-- Example row of columns -->
-    <form class="form-signin" action="/checkings_withdrawal" method="post">
-
-        <p th:text="'You must enter a date later than : ' +  ${lastCheckingTransactionDate} +' and before 12-31-2016.'" />
-        <br/>
-        <br/>
+    <form action="/checkings_withdrawal" method="post">
 
         <div class="row">
-            <div class="col-xs-4" >
-                <label class="sr-only">dateOfWithdrawal</label>
-                Enter Date of Withdrawal:
+            <!-- <p th:text=" 'firstName:     ' +  ${firstName}" />
+            <p th:text=" 'lastName:     ' +  ${lastName}" />
+            First Name: <input type="text" th:value="${firstName}"/> <br/>  -->
+            <div class="col-xs-6"  />
+            <div class="col-xs-6" align="left">
+                <input type="submit" name="action" value="DEPOSIT"/>
             </div>
-            <div class="col-xs-6"  align="left">
-                <input type="text" name="dateOfWithdrawal" value="MM-DD-YYYY"/>
-            </div>
-            <div class="col-xs-2"  />
         </div>
         <br/>
-        <div class="row">
-            <div class="col-xs-4" >
-                <label class="sr-only">amountOfWithdrawal</label>
-                Enter Amount of Withdrawal:
-            </div>
-            <div class="col-xs-6"  align="left">
-                <input type="text" name="amountOfWithdrawal"/>
-            </div>
-            <div class="col-xs-2"  />
-        </div>
-
-        <br/>
-
-
         <div class="row">
             <div class="col-xs-6"  />
             <div class="col-xs-6"  align="left">
-                <input type="submit" name="action" value="SUBMIT"/>
+                <input type="submit" name="action" value="WITHDRAWAL"/>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-xs-6"  />
+            <div class="col-xs-6"  align="left">
+                <input type="submit" name="action" value="BALANCE"/>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-xs-6"  />
+            <div class="col-xs-6"  align="left">
+                <input type="submit" name="action" value="TRANSACTIONS"/>
             </div>
 
         </div>
     </form>
-
 
 
 
