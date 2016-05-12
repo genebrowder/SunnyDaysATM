@@ -5,7 +5,7 @@
     <title>Title</title>
     <!-- CSS -->
     <link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" href="../static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link th:href="@{/css/checkings_or_savings.css}" href="../static/css/checkings_or_savings.css" rel="stylesheet"  type="text/css"/>
+    <link th:href="@{/css/after_signin.css}" href="../static/css/after_signin.css" rel="stylesheet"  type="text/css"/>
 
     <!-- JavaScript -->
     <script th:src="@{/lib/jquery/jquery-2.2.1.min.js}" src="../static/lib/jquery/jquery-2.2.1.min.js" type="application/javascript"></script>
@@ -17,14 +17,13 @@
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
-        <h1>Welcome to Sunny Days Bank ATM</h1>
-        <p><div class="btn"> Savings for a Sunny Day </div></p>
+        <h1>Choose: Checkings or Savings</h1>
     </div>
 
     <!--<form class="form-signin"  th:action="@{/checkings_or_savings}" th:object="${accountChoice}"  method="post"> -->
 
     <!-- Example row of columns -->
-    <form action="/checkings_or_savings" method="post">
+    <form class="form-signin" action="/checkings_or_savings" method="post">
 
         <div class="row">
             <!-- <p th:text=" 'firstName:     ' +  ${firstName}" />

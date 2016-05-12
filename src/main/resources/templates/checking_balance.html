@@ -5,7 +5,7 @@
     <title>Title</title>
     <!-- CSS -->
     <link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" href="../static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link th:href="@{/css/index.css}" href="../static/css/signin.css" rel="stylesheet"  type="text/css"/>
+    <link th:href="@{/css/after_signin.css}" href="../static/css/after_signin.css" rel="stylesheet"  type="text/css"/>
 
     <!-- JavaScript -->
     <script th:src="@{/lib/jquery/jquery-2.2.1.min.js}" src="../static/lib/jquery/jquery-2.2.1.min.js" type="application/javascript"></script>
@@ -16,27 +16,47 @@
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
+
      <table border="1" style="width:100%;background-color: #ED8F24">  <tr><td><h1 style="color:white ; font-size: 500%">Welcome to Sunny Days
 				Bank ATM</h1></td></tr></table>
         <p><div class="btn"> Savings for a Sunny Day </div></p>
+
+        <h1>Checking Balance</h1>
+
     </div>
 
     <!--<form class="form-signin"  th:action="@{/checkings_or_savings}" th:object="${accountChoice}"  method="post"> -->
 
     <!-- Example row of columns -->
+
     
     <form action="/checkings_balance" method="post">
 
+    <form class="form-signin" action="/checking_balance" method="post">
+
+
+
 <table border="1" style="width:100%">
+
+        <!--/*@thymesVar id="balance" type=""*/-->
+        <p th:text=" 'Balance:     ' +  ${balance}" />
+        <br/>
+
         <div class="row">
             <!-- <p th:text=" 'firstName:     ' +  ${firstName}" />
             <p th:text=" 'lastName:     ' +  ${lastName}" />
             First Name: <input type="text" th:value="${firstName}"/> <br/>  -->
             <div class="col-xs-6"  />
+
             <div class="col-xs-6" align="right">
               <tr> <center> <h2><input type="submit" name="action" value="DEPOSIT"/></h2></center></tr> 
+
+            <div class="col-xs-6" align="left">
+                <input type="submit" name="action" value="CONTINUE"/>
+
             </div>
         </div>
+
         <br/>
         <div class="row">
             <div class="col-xs-6"  />
@@ -60,6 +80,8 @@
             </div>
 
         </div></table>
+
+
     </form>
 
 

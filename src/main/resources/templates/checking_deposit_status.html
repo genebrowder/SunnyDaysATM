@@ -12,43 +12,52 @@
 
 </head>
 <body>
+
 <div class="container">
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
-        <h1>Checking Withdrawal</h1>
+        <h1>Checking Deposit Status</h1>
     </div>
 
     <!--<form class="form-signin"  th:action="@{/checkings_or_savings}" th:object="${accountChoice}"  method="post"> -->
 
     <!-- Example row of columns -->
-    <form class="form-signin" action="/checkings_withdrawal" method="post">
-
-        <p th:text="'You must enter a date later than : ' +  ${lastCheckingTransactionDate} +' and before 12-31-2016.'" />
-        <br/>
-        <br/>
+    <form class="form-signin" action="/checking_deposit_status" method="post">
 
         <div class="row">
             <div class="col-xs-4" >
-                <label class="sr-only">dateOfWithdrawal</label>
-                Enter Date of Withdrawal:
+            <label class="sr-only">dateOfDeposit</label>
+            Date of Deposit:
             </div>
             <div class="col-xs-6"  align="left">
-                <input type="text" name="dateOfWithdrawal" value="MM-DD-YYYY"/>
+                <input type="text" name="dateOfDeposit" th:value="${dateDepositAdded}"/>
             </div>
             <div class="col-xs-2"  />
         </div>
         <br/>
         <div class="row">
             <div class="col-xs-4" >
-                <label class="sr-only">amountOfWithdrawal</label>
-                Enter Amount of Withdrawal:
+                <label class="sr-only">amountOfDeposit</label>
+                Deposit Amount:
             </div>
             <div class="col-xs-6"  align="left">
-                <input type="text" name="amountOfWithdrawal"/>
+                <input type="text" name="amountOfDeposit" th:value="${depositAmount}"/>
             </div>
             <div class="col-xs-2"  />
         </div>
+        <br/>
+        <div class="row">
+            <div class="col-xs-4" >
+                <label class="sr-only">balance</label>
+                Balance:
+            </div>
+            <div class="col-xs-6"  align="left">
+                <input type="text" name="balance" th:value="${balance}"/>
+            </div>
+            <div class="col-xs-2"  />
+        </div>
+
 
         <br/>
 
@@ -56,12 +65,11 @@
         <div class="row">
             <div class="col-xs-6"  />
             <div class="col-xs-6"  align="left">
-                <input type="submit" name="action" value="SUBMIT"/>
+                <input type="submit" name="action" value="CONTINUE"/>
             </div>
 
         </div>
     </form>
-
 
 
 

@@ -32,10 +32,8 @@ public class IndexController {
 
             session.setAttribute("userLoginInfo",userLoginInfo);
 
-//            List<Account> accounts =  userLoginInfo.getUser().getAccount();
-//            System.out.println("Account Number = " +accounts.get(0).getAccountNumber());
-//            model.addAttribute("lastName",userLoginInfo.getUser().getLastName());
-//            model.addAttribute("firstName",userLoginInfo.getUser().getFirstName());
+            model.addAttribute("lastName",userLoginInfo.getUser().getLastName());
+            model.addAttribute("firstName",userLoginInfo.getUser().getFirstName());
             return "checkings_or_savings";
         }
         else{
