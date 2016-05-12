@@ -1,74 +1,130 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
-    <title>Title</title>
-    <!-- CSS -->
-    <link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" href="../static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link th:href="@{/css/after_signin.css}" href="../static/css/after_signin.css" rel="stylesheet"  type="text/css"/>
+<meta charset="UTF-8" />
+<title>Title</title>
+<!-- CSS -->
+<link th:href="@{/lib/bootstrap/css/bootstrap.min.css}"
+	href="../static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+	type="text/css" />
+<link th:href="@{/css/after_signin.css}"
+	href="../static/css/after_signin.css" rel="stylesheet" type="text/css" />
 
-    <!-- JavaScript -->
-    <script th:src="@{/lib/jquery/jquery-2.2.1.min.js}" src="../static/lib/jquery/jquery-2.2.1.min.js" type="application/javascript"></script>
+<!-- JavaScript -->
+<script th:src="@{/lib/jquery/jquery-2.2.1.min.js}"
+	src="../static/lib/jquery/jquery-2.2.1.min.js"
+	type="application/javascript"></script>
 
 </head>
 <body>
 
-<div class="container">
+	<div class="container">
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-        <h1>Checking Options</h1>
-    </div>
+		<!-- Main jumbotron for a primary marketing message or call to action -->
+		<div class="jumbotron">
+			<table border="1" style="width: 100%; background-color: #ED8F24">
+				<tr>
+					<td><h1 style="color: white; font-size: 500%">Checking
+							Options</h1></td>
+				</tr>
+			</table>
 
-    <!--<form class="form-signin"  th:action="@{/checkings_or_savings}" th:object="${accountChoice}"  method="post"> -->
+		</div>
 
-    <!-- Example row of columns -->
-    <form class="form-signin" action="/checking_options" method="post">
+		<!--<form class="form-signin"  th:action="@{/checkings_or_savings}" th:object="${accountChoice}"  method="post"> -->
 
-        <div class="row">
-            <!-- <p th:text=" 'firstName:     ' +  ${firstName}" />
+		<!-- Example row of columns -->
+		<form class="form-signin" action="/checking_options" method="post">
+
+
+			<div class="row">
+				<table border="1" style="width: 200%; background-color: #ED8F24">
+					<tr>
+						<td>
+							<!-- <p th:text=" 'firstName:     ' +  ${firstName}" />
             <p th:text=" 'lastName:     ' +  ${lastName}" />
             First Name: <input type="text" th:value="${firstName}"/> <br/>  -->
-            <div class="col-xs-6"  >
-            <p>Make a Deposit</p>
-            </div>
-            <div class="col-xs-6" align="left">
-                <input type="submit" name="action" value="DEPOSIT"/>
-            </div>
-        </div>
-        <br/>
-        <div class="row">
-            <div class="col-xs-6"  >
-                <p>Make a Withdrawal</p>
-            </div>
-            <div class="col-xs-6"  align="left">
-                <input type="submit" name="action" value="WITHDRAWAL"/>
-            </div>
-        </div>
-        <br/>
-        <div class="row">
-            <div class="col-xs-6"  >
-                <p>Check Balance</p>
-            </div>
-            <div class="col-xs-6"  align="left">
-                <input type="submit" name="action" value="BALANCE"/>
-            </div>
-        </div>
-        <br/>
-        <div class="row">
-            <div class="col-xs-6"  >
-                <p>Check Transactions</p>
-            </div>
-            <div class="col-xs-6"  align="left">
-                <input type="submit" name="action" value="TRANSACTIONS"/>
-            </div>
+							<div class="col-xs-6">
 
-        </div>
-    </form>
+								<h2 style="color: white">
+									<center>Make a Deposit</center>
+								</h2>
+							</div>
+							<div class="col-xs-6">
+								<h2>
+									<input type="submit" name="action" value="DEPOSIT" />
+								</h2>
+							</div>
+						</td>
+					</tr>
+					</td>
+					</tr>
+				</table>
+			</div>
+			<br />
+			<div class="row">
+				<table border="1" style="width: 200%; background-color: #ED8F24">
+					<tr>
+						<td>
+							<div class="col-xs-6">
+								
+										<h2 style="color: white">
+											<p>Make a Withdrawal</p>
+										</h2>
+									
+							</div>
+							<div class="col-xs-6" align="left">
+								<h2><input type="submit" name="action" value="WITHDRAWAL" /></h2>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<br />
+			<div class="row">
+				<table border="1" style="width: 200%; background-color: #ED8F24">
+					<tr>
+						<td>
+					<div class="col-xs-6">
+						
+								<h2 style="color: white">
+									<p>Check Balance</p>
+								</h2>
+							
+					</div>
+					<div class="col-xs-6" align="left">
+					<h2><input type="submit" name="action" value="BALANCE" /></h2>
+					</div>
+					</td>
+					</tr>
+				</table>
+			</div>
+			<br />
+			<div class="row">
+				<table border="1" style="width: 200%; background-color: #ED8F24">
+					<tr>
+						<td>
+					<div class="col-xs-6">
+						
+								<h2 style="color: white">
+									<p>Check Transactions</p>
+								</h2>
+							
+					</div>
+					<div class="col-xs-6" align="left">
+						<h2><input type="submit" name="action" value="TRANSACTIONS" /></h2>
+					</div>
+					</td>
+					</tr>
+				</table>
+
+			</div>
+		</form>
 
 
 
-</div> <!-- /container -->
+	</div>
+	<!-- /container -->
 
 
 </body>
